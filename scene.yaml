@@ -1,3 +1,6 @@
+scene:
+  background:
+    color: white
 sources:
   mapbox:
     type: MVT
