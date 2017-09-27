@@ -1,0 +1,52 @@
+sources:
+  mapbox:
+    type: MVT
+    url: https://a.tiles.mapbox.com/v4/mapbox.mapbox-streets-v7/{z}/{x}/{y}.mvt
+    url_params:
+      access_token: pk.eyJ1IjoiaGZ1IiwiYSI6ImlRSGJVUTAifQ.rTx380smyvPc1gUfZv1cmw
+    max_zoom: 16
+  openmaptiles:
+    type: MVT
+    url: https://free-0.tilehosting.com/data/v3/{z}/{x}/{y}.pbf.pict
+    url_params:
+      key: zaiCRULFvWaid8EJxgsb
+    max_zoom: 14
+  #mapzen:
+    #type: MVT
+    #url: https://tile.mapzen.com/mapzen/vector/v1/all/{z}/{x}/{y}.mvt
+    #url_params:
+      #api_key: vector-tiles-ZZReWv5
+    #max_zoom: 16
+styles:
+  polygons.transparent:
+    base: polygons
+    blend: overlay
+  lines.transparent:
+    base: lines
+    blend: overlay
+  points.transparent:
+    base: points
+    blend: overlay
+layers:
+  mapbox.road:
+    data:
+      source: mapbox
+      layer: road
+    draw:
+      lines.transparent:
+        color: [0, 0, 1, .5]
+        width: 1px
+  mapbox.landuse:
+    data:
+      source: mapbox
+      layer: landuse
+    draw:
+      polygons.transparent:
+        color: [0, 1, 0, .4]
+  openmaptiles.landuse:
+    data:
+      source: openmaptiles
+      layer: landuse
+    draw:
+      polygons.transparent:
+        color: [1, 0, 0, .4]
